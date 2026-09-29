@@ -1,6 +1,6 @@
 # 🎮 1 Milliarde Offline Games
 
-> **Aktuelle Version: `v1.8.5` — Stand: 29.09.2026, 12:40 Uhr**
+> **Aktuelle Version: `v1.8.5` — Stand: 29.09.2026, 12:43 Uhr**
 
 Minispiele fürs Handy und den Laptop – **komplett ohne Internet**:
 gegen die KI, zu zweit an einem Gerät oder allein.
@@ -9,7 +9,7 @@ gegen die KI, zu zweit an einem Gerät oder allein.
 
 ## 🚀 App starten
 
-**▶ [https://additiv3.github.io/1mrd-offline-games/](https://additiv3.github.io/1mrd-offline-games/)**
+**▶ [https://additiv3.github.io/1mrd-offline-games-GemAI/](https://additiv3.github.io/1mrd-offline-games-GemAI/)**
 
 ### Auf dem iPhone installieren
 1. Link in **Safari** öffnen
@@ -95,4 +95,4 @@ Repo:          Nur Build-Artefakte – kein Quellcode
 
 ---
 
-*Zuletzt aktualisiert: 29.09.2026 · v1.8.5 · Commit `c9f3a2b`*
+*Zuletzt aktualisiert: 29.09.2026 · v1.8.5 · Commit `c9f3a2b` · [App öffnen](https://additiv3.github.io/1mrd-offline-games-GemAI/)*
