@@ -1,33 +1,52 @@
 <!doctype html>
 <html lang="de">
   <head>
-    <meta http-equiv="Content-Security-Policy" content="default-src &#39;self&#39;; script-src &#39;self&#39;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; data:; font-src &#39;self&#39;; connect-src &#39;self&#39;; object-src &#39;none&#39;; base-uri &#39;self&#39;; form-action &#39;self&#39;; manifest-src &#39;self&#39;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; manifest-src 'self'">
 
     <meta charset="UTF-8" />
-    <!-- Content-Security-Policy wird nur im Prod-Build per Vite-Plugin eingefügt (vite.config.ts),
-         weil der Dev-Server Inline-Skripte für Hot-Reload braucht. -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
+
+    <!-- iOS PWA -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="1 Mrd. Games" />
+
+    <!-- Theme -->
     <meta name="theme-color" content="#0e0b1f" />
+    <meta name="msapplication-TileColor" content="#0e0b1f" />
+    <meta name="msapplication-navbutton-color" content="#0e0b1f" />
+
+    <!-- App Info -->
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="icon" type="image/png" href="./icons/icon-192.png" />
     <link rel="apple-touch-icon" href="./icons/icon-180.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./icons/icon-180.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="./icons/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="512x512" href="./icons/icon-512.png" />
+
+    <!-- SEO / OG -->
     <meta name="description" content="1 Milliarde Offline Games – Minispiele ohne Internet: gegen die KI, zu zweit an einem Handy oder allein." />
     <meta property="og:title" content="1 Milliarde Offline Games" />
     <meta property="og:description" content="1 Milliarde Offline Games – Minispiele ohne Internet: gegen die KI, zu zweit an einem Handy oder allein." />
+    <meta property="og:image" content="./icons/icon-512.png" />
+
     <title>1 Milliarde Offline Games</title>
+
+    <!-- Main app bundle (compiled React + Tailwind) -->
     <script type="module" crossorigin src="./assets/index-ONzyNlzA.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-BCeFSnmE.css">
+
     <style>
+      /* Safe area insets for iPhone notch/home bar */
       :root {
         --sat: env(safe-area-inset-top, 0px);
         --sab: env(safe-area-inset-bottom, 0px);
         --sal: env(safe-area-inset-left, 0px);
         --sar: env(safe-area-inset-right, 0px);
       }
+
+      /* ── Base layout ─────────────────────────────────────── */
       html, body {
         height: 100%;
         height: 100dvh;
@@ -41,7 +60,9 @@
         color: #fbf8ff;
         font-family: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, sans-serif;
         -webkit-tap-highlight-color: transparent;
+        overscroll-behavior: none;
       }
+
       #root {
         height: 100%;
         height: 100dvh;
@@ -51,55 +72,143 @@
         overflow: hidden;
         position: fixed;
         inset: 0;
+        /* Apply safe area padding once here so the React tree doesn't need to */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        box-sizing: border-box;
       }
+
+      /* ── Touch scrolling ─────────────────────────────────── */
       .scroll-touch {
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
         overscroll-behavior-y: contain;
       }
-      .pt-safe {
-        padding-top: max(12px, env(safe-area-inset-top, 12px));
+
+      /* ── Safe area helpers (used by React) ───────────────── */
+      .pt-safe { padding-top: max(12px, env(safe-area-inset-top, 12px)); }
+      .pb-safe { padding-bottom: max(16px, env(safe-area-inset-bottom, 16px)); }
+      .pl-safe { padding-left: max(12px, env(safe-area-inset-left, 12px)); }
+      .pr-safe { padding-right: max(12px, env(safe-area-inset-right, 12px)); }
+
+      /* ── Desktop mouse-wheel forwarding ──────────────────── */
+      /* handled via inline JS below */
+
+      /* ── Loading splash (shown until React mounts) ───────── */
+      #splash {
+        position: fixed;
+        inset: 0;
+        background: #0e0b1f;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        z-index: 9999;
+        transition: opacity 0.4s ease;
       }
-      .pb-safe {
-        padding-bottom: max(16px, env(safe-area-inset-bottom, 16px));
+      #splash.hidden { opacity: 0; pointer-events: none; }
+      #splash-title {
+        font-size: 1.4rem;
+        font-weight: 900;
+        letter-spacing: 0.18em;
+        color: #fbf8ff;
+        text-transform: uppercase;
       }
-      .pl-safe {
-        padding-left: max(12px, env(safe-area-inset-left, 12px));
+      #splash-sub {
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        color: #a9a3cf;
+        text-transform: uppercase;
       }
-      .pr-safe {
-        padding-right: max(12px, env(safe-area-inset-right, 12px));
+      #splash-ver {
+        font-size: 0.6rem;
+        color: #7c4dff;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-top: 4px;
+      }
+      #splash-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #7c4dff, #ff4fa3);
+        animation: pulse-dot 1.2s ease-in-out infinite;
+        margin-top: 16px;
+      }
+      @keyframes pulse-dot {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50%       { transform: scale(1.6); opacity: 0.5; }
+      }
+
+      /* ── Laptop / desktop: wider game grid ───────────────── */
+      @media (min-width: 768px) {
+        #root { position: relative; overflow: auto; height: 100dvh; }
+        .scroll-touch { overscroll-behavior-y: auto; }
       }
     </style>
   </head>
   <body>
+
+    <!-- Loading splash (fades out once React mounts) -->
+    <div id="splash" aria-hidden="true">
+      <div id="splash-title">GAMES</div>
+      <div id="splash-sub">ca. 1 Milliarde</div>
+      <div id="splash-ver" id="splash-version">v1.8.5 · 29.09.2026</div>
+      <div id="splash-dot"></div>
+    </div>
+
+    <!-- React root -->
     <div id="root"></div>
+
     <script>
-      // Service Worker registration with instant update check and auto-reload on new version
+      // ── Service Worker: register + instant update check ──────────────────
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' })
-          .then(function(reg) {
-            reg.update();
-          })
-          .catch(function(err) {
-            console.warn('SW registration:', err);
-          });
+          .then(function(reg) { reg.update(); })
+          .catch(function(err) { console.warn('SW registration:', err); });
 
         var refreshing = false;
         navigator.serviceWorker.addEventListener('controllerchange', function() {
-          if (!refreshing) {
-            refreshing = true;
-            window.location.reload();
-          }
+          if (!refreshing) { refreshing = true; window.location.reload(); }
         });
       }
 
-      // Desktop / Laptop mouse wheel forwarding: ensure scrolling works anywhere on the screen
+      // ── Desktop / Laptop mouse-wheel → scroll forwarding ─────────────────
+      // Ensures the game list scrolls when hovering anywhere on the page.
       window.addEventListener('wheel', function(e) {
         var scrollable = document.querySelector('.scroll-touch');
         if (scrollable && !e.target.closest('.scroll-touch')) {
           scrollable.scrollTop += e.deltaY;
         }
       }, { passive: true });
+
+      // ── Hide splash once React has painted ───────────────────────────────
+      var splashHidden = false;
+      function hideSplash() {
+        if (splashHidden) return;
+        splashHidden = true;
+        var s = document.getElementById('splash');
+        if (s) {
+          s.classList.add('hidden');
+          setTimeout(function() { if (s.parentNode) s.parentNode.removeChild(s); }, 450);
+        }
+      }
+      // Use requestIdleCallback (desktop) or a short timeout (iOS)
+      if (document.readyState === 'complete') {
+        setTimeout(hideSplash, 300);
+      } else {
+        window.addEventListener('load', function() { setTimeout(hideSplash, 300); });
+      }
+
+      // ── Keyboard shortcut: Escape → go home ──────────────────────────────
+      // (helpful on laptop — matches the hash-based router in the bundle)
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && window.location.hash && window.location.hash !== '#') {
+          window.location.hash = '';
+        }
+      });
     </script>
   </body>
 </html>

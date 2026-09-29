@@ -1,7 +1,7 @@
 {
-  "version": "1.8.4",
-  "commit": "b7e2f1a",
-  "timestamp": "29.09.2026, 11:25",
+  "version": "1.8.5",
+  "commit": "c9f3a2b",
+  "timestamp": "29.09.2026, 12:35",
   "gamesCount": 17,
-  "features": ["LuxuryCardEngine", "CourtPortraits", "TouchOptimizedKeypads", "DailyBonus", "StampCards", "Challenges", "Shop", "17GamesOffline"]
+  "features": ["LuxuryCardEngine", "CourtPortraits", "TouchOptimizedKeypads", "DailyBonus", "StampCards", "Challenges", "Shop", "17GamesOffline", "VersionHeader"]
 }

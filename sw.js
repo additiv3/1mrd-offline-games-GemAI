@@ -1,6 +1,6 @@
 /* 1 Milliarde Offline Games – Service Worker: offline spielbar, online immer die neueste Version.
    Vorlage: das Plugin "mrd-pwa" in vite.config.ts setzt Cache-Name und Vorab-Liste ein und schreibt dist/sw.js. */
-const CACHE = 'mrd-offline-games-v1.8.4-build2';
+const CACHE = 'mrd-offline-games-v1.8.5-build1';
 const PRECACHE = [
   "./",
   "./index.html",
