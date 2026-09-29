@@ -1,6 +1,6 @@
 # 🎮 1 Milliarde Offline Games
 
-> **Aktuelle Version: `v1.8.5` — Stand: 29.09.2026, 12:43 Uhr**
+> **Aktuelle Version: `v1.8.6` — Stand: 29.09.2026, 14:10 Uhr**
 
 Minispiele fürs Handy und den Laptop – **komplett ohne Internet**:
 gegen die KI, zu zweit an einem Gerät oder allein.
@@ -66,7 +66,8 @@ gegen die KI, zu zweit an einem Gerät oder allein.
 
 | Version | Datum | Was ist neu |
 |---|---|---|
-| **v1.8.5** | 29.09.2026 | Version/Datum/Echtzeit-Uhr oben auf Startseite; iPhone Safe-Area verbessert; Laptop-Scrolling & Escape-Taste; Splash-Screen beim Laden; manifest orientation=any |
+| **v1.8.6** | 29.09.2026 | Komplett neues UI f�r die Startseite: responsive Buttons, optimiert f�r iPhone, alle Popups als echte Vollbild-Men�s mit X-Button (Zur�ck-Buttons entfernt), CSS Overflow Bugs gefixt |
+| v1.8.6 | 29.09.2026 | Version/Datum/Echtzeit-Uhr oben auf Startseite; iPhone Safe-Area verbessert; Laptop-Scrolling & Escape-Taste; Splash-Screen beim Laden; manifest orientation=any |
 | v1.8.4 | 29.09.2026 | Mobile Shell Überarbeitung, Fullscreen-Modals, Safe-Areas, alle Spiele gefixt |
 | v1.8.3 | 29.09.2026 | Blank-Screen-Crash behoben, Mobile-UI finalisiert |
 | v1.8.2 | 28.09.2026 | Mobile-App-Scroll-Fix, Fullscreen-Modals |
@@ -95,4 +96,6 @@ Repo:          Nur Build-Artefakte – kein Quellcode
 
 ---
 
-*Zuletzt aktualisiert: 29.09.2026 · v1.8.5 · Commit `c9f3a2b` · [App öffnen](https://additiv3.github.io/1mrd-offline-games-GemAI/)*
+*Zuletzt aktualisiert: 29.09.2026 · v1.8.6 · Commit `c9f3a2b` · [App öffnen](https://additiv3.github.io/1mrd-offline-games-GemAI/)*
+
+
