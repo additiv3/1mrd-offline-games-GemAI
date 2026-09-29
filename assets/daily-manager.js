@@ -1,4 +1,4 @@
-/* 1 Milliarde Offline Games – Täglicher Bonus & Glücksrad System */
+﻿/* 1 Milliarde Offline Games – Täglicher Bonus & Glücksrad System */
 
 const STORAGE_KEY_DAILY = 'mrd:v1:daily:data';
 const STORAGE_KEY_PROGRESS = 'mrd:v1:shell:progress';
@@ -112,18 +112,14 @@ export function openDailyModal() {
   modal.innerHTML = `
     <!-- Top Header Bar -->
     <div class="flex items-center justify-between border-b border-line/60 pb-3 shrink-0">
-      <button id="back-daily-btn" type="button" class="flex items-center gap-1.5 text-ink font-bold text-xs py-1 px-2.5 rounded-full bg-surface-raised border border-line active:scale-95 transition cursor-pointer">
-        <span class="text-xs">←</span>
-        <span>Zurück</span>
-      </button>
       <div class="flex items-center gap-2 text-center">
-        <span class="text-xl">🎁</span>
-        <div>
-          <h2 class="font-black text-sm sm:text-base leading-tight">Täglicher Bonus</h2>
+        <span class="text-2xl">🎁</span>
+        <div class="text-left">
+          <h2 class="font-black text-lg sm:text-xl leading-tight">Bonus</h2>
           <p class="text-[11px] text-pop-yellow font-bold">${state.streak} Tage Streak 🔥</p>
         </div>
       </div>
-      <button id="close-daily-btn" type="button" class="w-8 h-8 rounded-full bg-surface-raised flex items-center justify-center text-ink-muted hover:text-ink font-black active:scale-95 transition border border-line cursor-pointer" aria-label="Schließen">✕</button>
+      <button id="close-daily-btn" type="button" class="w-10 h-10 rounded-full bg-surface-raised flex items-center justify-center text-ink hover:text-white font-black text-lg active:scale-95 transition border border-line cursor-pointer" aria-label="Schließen">✕</button>
     </div>
 
     <!-- Scrollable Content -->

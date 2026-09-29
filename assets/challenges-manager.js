@@ -1,4 +1,4 @@
-// Challenges & Stamp Card Manager (Herausforderungen & Stempelkarten)
+﻿// Challenges & Stamp Card Manager (Herausforderungen & Stempelkarten)
 
 const STORAGE_KEY = 'mrd:v1:challenges_data';
 const PROGRESS_KEY = 'mrd:v1:shell:progress';
@@ -431,18 +431,14 @@ export function openChallengesModal() {
     const header = document.createElement('div');
     header.className = 'flex items-center justify-between p-3.5 border-b border-line bg-surface-raised shrink-0';
     header.innerHTML = `
-      <button id="back-challenges-btn" type="button" class="flex items-center gap-1.5 text-ink font-bold text-xs py-1 px-2.5 rounded-full bg-surface border border-line active:scale-95 transition cursor-pointer">
-        <span class="text-xs">←</span>
-        <span>Zurück</span>
-      </button>
-      <div class="flex items-center gap-2 text-center">
-        <span class="text-xl">🎫</span>
+      <div class="flex items-center gap-2 text-left">
+        <span class="text-2xl">🎟️</span>
         <div>
-          <h2 class="font-black text-sm sm:text-base leading-tight">Stempel & Missionen</h2>
+          <h2 class="font-black text-lg sm:text-xl leading-tight">Stempel & Missionen</h2>
           <p class="text-[10px] text-ink-muted font-bold">6 Stempel = 250 🪙 Jackpot</p>
         </div>
       </div>
-      <button id="close-challenges-btn" type="button" class="w-8 h-8 rounded-full bg-surface flex items-center justify-center text-ink-muted hover:text-ink font-black active:scale-95 transition border border-line cursor-pointer" aria-label="Schließen">✕</button>
+      <button id="close-challenges-btn" type="button" class="w-10 h-10 rounded-full bg-surface-raised flex items-center justify-center text-ink hover:text-white font-black text-lg active:scale-95 transition border border-line cursor-pointer" aria-label="Schließen">✕</button>
     `;
 
     // Tabs

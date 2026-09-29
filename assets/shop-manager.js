@@ -1,4 +1,4 @@
-/* 1 Milliarde Offline Games – Shop & Belohnungs-Manager */
+﻿/* 1 Milliarde Offline Games – Shop & Belohnungs-Manager */
 
 const STORAGE_KEY_SHOP = 'mrd:v1:shop:data';
 const STORAGE_KEY_PROGRESS = 'mrd:v1:shell:progress';
@@ -290,24 +290,18 @@ export function openShopModal() {
     header.style.cssText = 'padding:14px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.08);background:#1a1533;shrink:0;';
     header.innerHTML = `
       <div style="display:flex;align-items:center;gap:8px;">
-        <button id="shop-back-btn" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:bold;cursor:pointer;display:flex;align-items:center;gap:4px;">
-          <span>←</span>
-          <span>Zurück</span>
-        </button>
-        <div style="display:flex;align-items:center;gap:6px;">
-          <span style="font-size:20px;">🛍️</span>
-          <div>
-            <h2 style="font-size:16px;font-weight:900;margin:0;letter-spacing:-0.02em;">Design-Shop</h2>
-            <p style="font-size:11px;color:rgba(255,255,255,0.6);margin:0;">Skins & Themen</p>
-          </div>
+        <span style="font-size:28px;">🛒</span>
+        <div>
+          <h2 style="font-size:20px;font-weight:900;margin:0;letter-spacing:-0.02em;">Design-Shop</h2>
+          <p style="font-size:12px;color:rgba(255,255,255,0.6);margin:0;">Skins & Themen</p>
         </div>
       </div>
-      <div style="display:flex;align-items:center;gap:8px;">
-        <div style="display:flex;align-items:center;gap:5px;background:rgba(255,215,0,0.15);border:1px solid rgba(255,215,0,0.3);padding:4px 10px;border-radius:999px;font-weight:900;color:#ffd700;font-size:13px;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="display:flex;align-items:center;gap:5px;background:rgba(255,215,0,0.15);border:1px solid rgba(255,215,0,0.3);padding:4px 10px;border-radius:999px;font-weight:900;color:#ffd700;font-size:14px;">
           <span>🪙</span>
           <span>${coins}</span>
         </div>
-        <button id="shop-close-btn" style="background:rgba(255,255,255,0.1);border:none;color:#fff;width:32px;height:32px;border-radius:999px;font-size:16px;font-weight:bold;cursor:pointer;display:grid;place-items:center;" aria-label="Schließen">✕</button>
+        <button id="shop-close-btn" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);color:#fff;width:40px;height:40px;border-radius:999px;font-size:20px;font-weight:bold;cursor:pointer;display:grid;place-items:center;transition:transform 0.1s;" aria-label="Schließen">✕</button>
       </div>
     `;
     dialog.appendChild(header);
