@@ -1,8 +1,12 @@
 {
-  "name": "1 Milliarde Offline Games",
-  "description": "Minispiele fürs Handy – ohne Internet: gegen die KI, zu zweit an einem Handy oder allein.",
-  "permissions": [],
-  "capabilities": [
-    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
-  ]
+    "name":  "1 Milliarde Offline Games",
+    "description":  "Minispiele fürs Handy – ohne Internet: gegen die KI, zu zweit an einem Handy oder allein.",
+    "permissions":  [
+
+                    ],
+    "capabilities":  [
+                         "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+                     ],
+    "version":  "1.8.5",
+    "updatedAt":  "2026-09-29T13:13:46Z"
 }

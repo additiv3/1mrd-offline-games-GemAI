@@ -1,15 +1,15 @@
 {
-  "name": "1mrd-offline-games",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "node server.js",
-    "start": "node server.js",
-    "build": "echo 'Static build ready'"
-  },
-  "dependencies": {
-    "express": "^4.21.2",
-    "jsdom": "^30.1.1"
-  }
+    "name":  "1mrd-offline-games",
+    "version":  "1.8.5",
+    "private":  true,
+    "type":  "module",
+    "scripts":  {
+                    "dev":  "node server.js",
+                    "start":  "node server.js",
+                    "build":  "echo \u0027Static build ready\u0027"
+                },
+    "dependencies":  {
+                         "express":  "^4.21.2",
+                         "jsdom":  "^30.1.1"
+                     }
 }
