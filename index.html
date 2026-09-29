@@ -54,8 +54,6 @@
         margin: 0;
         padding: 0;
         overflow: hidden;
-        position: fixed;
-        inset: 0;
         background: #0e0b1f;
         color: #fbf8ff;
         font-family: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, sans-serif;
@@ -70,15 +68,13 @@
         display: flex;
         flex-direction: column;
         overflow: hidden;
-        position: fixed;
-        inset: 0;
         /* Apply safe area padding once here so the React tree doesn't need to */
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         box-sizing: border-box;
       }
 
       /* ── Touch scrolling ─────────────────────────────────── */
-      .scroll-touch {
+      main {
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
         overscroll-behavior-y: contain;
@@ -95,8 +91,6 @@
 
       /* ── Loading splash (shown until React mounts) ───────── */
       #splash {
-        position: fixed;
-        inset: 0;
         background: #0e0b1f;
         display: flex;
         flex-direction: column;
@@ -144,8 +138,8 @@
 
       /* ── Laptop / desktop: wider game grid ───────────────── */
       @media (min-width: 768px) {
-        #root { position: relative; overflow: auto; height: 100dvh; }
-        .scroll-touch { overscroll-behavior-y: auto; }
+        #root { position: relative; height: 100dvh; }
+        main { overscroll-behavior-y: auto; }
       }
     </style>
   </head>
@@ -178,8 +172,8 @@
       // ── Desktop / Laptop mouse-wheel → scroll forwarding ─────────────────
       // Ensures the game list scrolls when hovering anywhere on the page.
       window.addEventListener('wheel', function(e) {
-        var scrollable = document.querySelector('.scroll-touch');
-        if (scrollable && !e.target.closest('.scroll-touch')) {
+        var scrollable = document.querySelector('main');
+        if (scrollable && !e.target.closest('main')) {
           scrollable.scrollTop += e.deltaY;
         }
       }, { passive: true });
@@ -212,3 +206,5 @@
     </script>
   </body>
 </html>
+
+
