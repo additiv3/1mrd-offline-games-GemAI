@@ -65,6 +65,12 @@
       .pr-safe {
         padding-right: max(12px, env(safe-area-inset-right, 12px));
       }
+          /* Missing Tailwind Utilities */
+      .min-h-0 { min-height: 0px !important; }
+      .overscroll-contain { overscroll-behavior: contain !important; }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      main, .overflow-y-auto { -webkit-overflow-scrolling: touch !important; }
     </style>
   </head>
   <body>
@@ -99,6 +105,7 @@
     </script>
   </body>
 </html>
+
 
 
 
