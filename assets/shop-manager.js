@@ -409,7 +409,7 @@ export function openShopModal() {
     container.appendChild(dialog);
 
     dialog.querySelector('#shop-close-btn').onclick = () => container.remove();
-    dialog.querySelector('#shop-back-btn').onclick = () => container.remove();
+    
   }
 
   container.onclick = (e) => {
